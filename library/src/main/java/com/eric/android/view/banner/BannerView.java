@@ -22,8 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
-import com.eric.android.view.banner.holder.BannerHolderCreator;
 import com.eric.android.view.banner.holder.BannerViewHolder;
+import com.eric.android.view.banner.holder.BannerHolderCreator;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

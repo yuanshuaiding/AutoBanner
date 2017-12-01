@@ -1,4 +1,4 @@
-package com.eric.android.view.banner;
+package com.eric.android.view.bannerdemo;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.eric.android.view.banner.BannerView;
 import com.eric.android.view.banner.holder.BannerHolderCreator;
 import com.eric.android.view.banner.holder.BannerViewHolder;
 

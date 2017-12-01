@@ -20,6 +20,14 @@ allprojects {
         google()
         jcenter()
     }
+    //防止中文注释无法识别
+    tasks.withType(Javadoc) {
+        options{
+            encoding "UTF-8"
+            charSet 'UTF-8'
+            links "http://docs.oracle.com/javase/7/docs/api"
+        }
+    }
 }
 
 task clean(type: Delete) {

@@ -31,7 +31,7 @@ publish {
     artifactId = 'autobanner'////发布到JCenter上的项目名字，compile引用时的第2部分项目名
     publishVersion = android.defaultConfig.versionName//版本号 ，compile引用时的最后部分，下次更新是只需要更改版本号即可
     desc = 'An auto scroll viewpager for ads,etc.'//描述
-    website = 'https://github.com/yuanshuaiding/MyFunny'  //项目的GitHub网站
+    website = 'https://github.com/yuanshuaiding/AutoBanner'  //项目的GitHub网站
     bintrayUser = properties.getProperty("bintray.user")//读取 local.properties 文件里面的 bintray.user
     bintrayKey = properties.getProperty("bintray.apikey")//读取 local.properties 文件里面的 bintray.apikey
     dryRun = false

@@ -1,4 +1,4 @@
-package com.eric.android.view.banner;
+package com.eric.android.view.bannerdemo;
 
 /**
  * 模拟数据

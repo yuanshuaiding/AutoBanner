@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.eric.android.view.banner"
+        applicationId "com.eric.android.view.bannerdemo"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1

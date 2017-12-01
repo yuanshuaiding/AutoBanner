@@ -1,4 +1,4 @@
-package com.eric.android.view.banner;
+package com.eric.android.view.bannerdemo;
 
 import org.junit.Test;
 

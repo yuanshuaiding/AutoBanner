@@ -1,4 +1,4 @@
-package com.eric.android.view.banner;
+package com.eric.android.view.bannerdemo;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
