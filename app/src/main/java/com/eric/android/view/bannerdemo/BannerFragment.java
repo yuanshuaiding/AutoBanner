@@ -46,7 +46,7 @@ public class BannerFragment extends Fragment {
 
     private void initView(View view) {
         mBannerView = view.findViewById(R.id.banner_pager);
-        mBannerView.setDelayedTime(10000);
+        mBannerView.setDelayedTime(3000);
         mBannerView.setPages(mockData(), new BannerHolderCreator<ViewPagerHolder>() {
             @Override
             public ViewPagerHolder createViewHolder() {

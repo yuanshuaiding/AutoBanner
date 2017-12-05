@@ -22,8 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
 
-import com.eric.android.view.banner.holder.BannerViewHolder;
 import com.eric.android.view.banner.holder.BannerHolderCreator;
+import com.eric.android.view.banner.holder.BannerViewHolder;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -148,6 +148,7 @@ public class BannerView<T> extends RelativeLayout {
     private void initIndicator() {
         mIndicatorContainer.removeAllViews();
         mIndicators.clear();
+
         for (int i = 0; i < mDatas.size(); i++) {
             ImageView imageView = new ImageView(getContext());
             if (mIndicatorAlign == IndicatorAlign.LEFT.ordinal()) {
@@ -178,6 +179,12 @@ public class BannerView<T> extends RelativeLayout {
 
             mIndicators.add(imageView);
             mIndicatorContainer.addView(imageView);
+            if (mDatas.size() > 1) {
+                mIndicatorContainer.setVisibility(VISIBLE);
+            } else {
+                //只有一张时无需显示指示器
+                mIndicatorContainer.setVisibility(GONE);
+            }
         }
     }
 
@@ -194,7 +201,7 @@ public class BannerView<T> extends RelativeLayout {
             case MotionEvent.ACTION_DOWN:
                 int paddingLeft = mViewPager.getLeft();
                 float touchX = ev.getRawX();
-                // 如果是魅族模式，去除两边的区域
+                //判断是否在触摸在有效图片区域
                 if (touchX >= paddingLeft && touchX < getScreenWidth(getContext()) - paddingLeft) {
                     mIsAutoPlay = false;
                 }
@@ -220,9 +227,13 @@ public class BannerView<T> extends RelativeLayout {
         if (mAdapter == null) {
             return;
         }
-        if (mIsCanLoop) {
+        if (mIsCanLoop && mDatas.size() > 1) {
             mIsAutoPlay = true;
             mHandler.postDelayed(mLoopRunnable, mDelayedTime);
+        } else {
+            mIsAutoPlay = false;
+            mIsCanLoop = false;
+            mHandler.removeCallbacksAndMessages(null);
         }
     }
 
@@ -302,7 +313,10 @@ public class BannerView<T> extends RelativeLayout {
         // 将Indicator初始化放在Adapter的初始化之前，解决更新数据变化更新时crush.
         //初始化Indicator
         initIndicator();
-
+        //如果只有一个图片,则不需要轮播
+        if (mDatas.size() < 2) {
+            mIsCanLoop = false;
+        }
         mAdapter = new BannerPagerAdapter<>(datas, bannerHolderCreator, mIsCanLoop);
         mAdapter.setUpViewViewPager(mViewPager);
         mAdapter.setPageClickListener(mBannerPageClickListener);
